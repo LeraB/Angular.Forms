@@ -1,0 +1,85 @@
+<section class="user-form">
+<form #formData="ngForm" [formGroup]="form" (ngSubmit)="onSubmit(formData.value)" class="form">
+  <div class="form__item form-field">
+    <label class="form__label" for="firstName">First name</label>
+    <input class="form__input" type="text" id="firstName" name="firstName"
+           formControlName="firstName">
+  </div>
+
+  <div class="form__item form-field">
+    <label class="form__label" for="lastName">Last name</label>
+    <input class="form__input" type="text" id="lastName" name="lastName"
+           formControlName="lastName">
+  </div>
+
+  <div class="form__item form-field">
+    <label class="form__label" for="areaCode">Area Code</label>
+    <input class="form__input" type="text" id="areaCode" name="areaCode"
+           formControlName="areaCode">
+  </div>
+
+  <div class="form__item form-field">
+    <label class="form__label" for="phoneNumber">Phone number</label>
+    <input class="form__input" type="text" id="phoneNumber" name="phoneNumber"
+           formControlName="phoneNumber">
+  </div>
+
+  <div class="form__item form-field" formArrayName="email">
+    <label class="form__label" for="'email' + i">Email</label>
+    <div class="form__item--emails" *ngFor="let email of email.controls;let i = index">
+      <input class="form__input"  type="text" id="'email' + i" [name]="'email' + i" [formControlName]="i">
+      <button class="form__item--rm" (click)="deleteEmailField($event)" type="button">X</button>
+    </div>
+    <button class="form__item--add" (click)="addEmailField()" type="button">+</button>
+  </div>
+
+  <div class="form__item form-field">
+    <label class="form__label" for="company">Company</label>
+    <input class="form__input"  type="text" id="company" name="company" formControlName="company">
+  </div>
+
+  <div class="form__item form-field">
+    <label class="form__label" for="streetAddress">Street Address</label>
+    <input class="form__input"  type="text" id="streetAddress" name="streetAddress"
+           formControlName="streetAddress">
+  </div>
+
+  <div class="form__item form-field">
+    <label class="form__label" for="streetAddressLineTwo">Street Address Line 2</label>
+    <input class="form__input" type="text" id="streetAddressLineTwo"
+           name="streetAddressLineTwo" formControlName="streetAddressLineTwo">
+  </div>
+
+  <div class="form__item form-field">
+    <label class="form__label" for="city">City</label>
+    <input class="form__input"  type="text" id="city" name="city" formControlName="city">
+  </div>
+
+  <div class="form__item form-field">
+    <label class="form__label" for="stateProvince">State/Province</label>
+    <input class="form__input"  type="text" id="stateProvince" name="stateProvince"
+           formControlName="stateProvince">
+  </div>
+
+  <div class="form__item form-field">
+    <label class="form__label" for="postalZipCode">Postal/Zip Code</label>
+    <input class="form__input"  type="text" id="postalZipCode" name="postalZipCode"
+           formControlName="postalZipCode">
+  </div>
+
+  <div class="form__item form-field">
+    <label class="form__label" for="country">Country</label>
+    <input class="form__input"  type="text" id="country" name="country" formControlName="country">
+  </div>
+
+  <button type="reset"  class="form__button form__reset" (click)="formData.reset()">Reset</button>
+  <button type="submit"  class="form__button form__submit">Submit</button>
+</form>
+
+<div class="form-result">
+<h1>Result</h1>
+<div *ngFor="let item of result | keyvalue">
+  <p>{{item.key}} : {{ item.value }}</p>
+</div>
+</div>
+</section>
