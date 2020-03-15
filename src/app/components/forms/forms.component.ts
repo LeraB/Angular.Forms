@@ -44,6 +44,5 @@ export class FormsComponent {
 
   onSubmit(formData: FormData) {
     this.result = formData;
-    this.isSubmit = true;
   }
 }
